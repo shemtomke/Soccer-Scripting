@@ -12,6 +12,8 @@ public class PlayerControllerX : MonoBehaviour
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
 
+    public ParticleSystem turboEffect;
+
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
     
@@ -29,7 +31,9 @@ public class PlayerControllerX : MonoBehaviour
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+        //turboEffect.transform.position = transform.position + new Vector3(0, -0.36f, -0.56f);
 
+        ShowParticle();
     }
 
     // If Player collides with powerup, activate powerup
@@ -72,6 +76,21 @@ public class PlayerControllerX : MonoBehaviour
         }
     }
 
-
+    void ShowParticle()
+    {
+        //The player should get a speed boost whenever the player presses spacebar -
+        if (Input.GetKey(KeyCode.Space))
+        {
+            //and a particle effect should appear when they use it 
+            turboEffect.Play();
+            //increase speed
+            speed = 1000;
+        }
+        else
+        {
+            speed = 500;
+            turboEffect.Stop();
+        }
+    }
 
 }

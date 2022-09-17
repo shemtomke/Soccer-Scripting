@@ -59,6 +59,8 @@ public class SpawnManagerX : MonoBehaviour
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
 
+        //increase speed of each enemy
+
         waveCount++;
         ResetPlayerPosition(); // put player back at start
 
